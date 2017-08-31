@@ -1,0 +1,61 @@
+136 combinções possiveis entre 2 labels (matematicamente)
+
+'primary': 37513,
+'clear': 28431,
+'agriculture': 12315,
+'road': 8071,
+'water': 7411,
+'partly_cloudy': 7261,
+'cultivation': 4547,
+'habitation': 3660,
+'haze': 2697,
+'cloudy': 2089,
+'bare_ground': 862,
+'selective_logging': 340,
+'artisinal_mine': 339,
+'blooming': 332,
+'slash_burn': 209,
+'blow_down': 101,
+'conventional_mine': 100}
+
+
+('clear', 'partly_cloudy'), 0) # ou é clear ou é partly
+('haze', 'partly_cloudy'), 0) #ou é haze ou é partly
+('clear', 'cloudy'), 0) #ou é clear ou é cloudy
+('cloudy', 'partly_cloudy'), 0)  #ou é cloudy ou é partly.
+('clear', 'haze'), 0)   #ou é clear ou é haze
+('cloudy', 'haze'), 0) # ou é um ou outro
+
+Assim todos os fenomenos de condições de tempo são mutualmente exclusivos, aplica-se classificação simples. Um único treino é suficiente.
+
+('cloudy', 'water'), 0)
+('cloudy', 'bare_ground'), 0)
+('blooming', 'cloudy'), 0)
+('slash_burn', 'cloudy'), 0)
+('cloudy', 'habitation'), 0)
+('cloudy', 'agriculture'), 0)
+('cloudy', 'selective_logging'), 0)
+('primary', 'cloudy'), 0)
+('cloudy', 'artisinal_mine'), 0)
+('cloudy', 'cultivation'), 0)
+('cloudy', 'conventional_mine'), 0)
+('cloudy', 'road'), 0)
+('cloudy', 'blow_down'), 0)
+
+Assim verifica-se que se houver classificação como cloudy, exclui-se qualquer outra possibilidade de classificação>>>> cloudy': 2089
+
+labels_dict[('primary','blow_down')]: 98  VS   'blow_down': 101   Muito Correlacionado!
+labels_dict[('primary','selective_logging')]: 340 VS  'selective_logging': 340   Verifica-se só imagens primary deveriam ter 'selective_logging'
+labels_dict[('primary','cultivation')]: 4455  VS  'cultivation': 4547   Muito Correlacionado!
+labels_dict[('slash_burn','primary')]: 209   VS   'slash_burn': 209  Verifica-se só imagens primary deveriam ter 'slash_burn'
+
+('haze', 'blow_down'), 0) 
+('conventional_mine', 'selective_logging'), 0)
+('conventional_mine', 'blow_down'), 0)
+('blooming', 'conventional_mine'), 0)
+('slash_burn', 'artisinal_mine'), 0)
+('slash_burn', 'conventional_mine'), 0)
+('blooming', 'artisinal_mine'), 0)
+('artisinal_mine', 'blow_down'), 0)
+
+Estes são inconclusivos ou por serem raras não se cruzam.

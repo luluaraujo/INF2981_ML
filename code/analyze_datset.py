@@ -2,7 +2,7 @@ def distribuicao_dataset():
 
 	count_total = 0
 
-	with open("../dataset/train.csv") as f:
+	with open("../dataset/compiled_results.csv") as f:
 
 		labels = set()
 		labelsSize = dict()
